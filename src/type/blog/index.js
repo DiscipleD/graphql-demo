@@ -13,6 +13,14 @@ import TagType from './Tag';
 
 import { getPostByName, getPostsList, getTagByName, getTagsList } from '../../data';
 
+/**
+ * type Blog {
+ *   post: Post,	// 查询一篇文章
+ *   posts: [Post],	// 查询一组文章，用于博客首页
+ *   tag: Tag,		// 查询一个标签
+ *   tags: [Tag],	// 查询所有标签，用于博客标签页
+ * }
+ */
 const BlogType = new GraphQLObjectType({
 	name: 'BlogType',
 	fields: () => ({
@@ -23,7 +31,7 @@ const BlogType = new GraphQLObjectType({
 					type: GraphQLString
 				}
 			},
-			resolve: (root, { name }) => getPostByName(name),
+			resolve: (blog, { name }) => getPostByName(name),
 		},
 		posts: {
 			type: new GraphQLList(PostType),
@@ -36,7 +44,7 @@ const BlogType = new GraphQLObjectType({
 					type: GraphQLString
 				}
 			},
-			resolve: (root, { name }) => getTagByName(name),
+			resolve: (blog, { name }) => getTagByName(name),
 		},
 		tags: {
 			type: new GraphQLList(TagType),

@@ -4,11 +4,11 @@
 
 import { GraphQLString } from 'graphql';
 
-const HelloType = {
+const WorldType = {
 	type: GraphQLString,
 	resolve() {
 		return 'world';
 	}
 };
 
-export default HelloType;
+export default WorldType;

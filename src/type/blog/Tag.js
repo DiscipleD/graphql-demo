@@ -14,6 +14,15 @@ import PostType from './Post';
 
 import { getPostsList } from '../../data';
 
+/**
+ * type Tag {
+ *   id: ID!,
+ *   name: String!,
+ *   label: String!,
+ *   createDate: String!,
+ *   posts: [Post]
+ * }
+ */
 const Tag = new GraphQLObjectType({
 	name: 'TagType',
 	fields: () => ({
@@ -31,7 +40,7 @@ const Tag = new GraphQLObjectType({
 		},
 		posts: {
 			type: new GraphQLList(PostType),
-			resolve: tag => getPostsList().filter(post => post.tags.indexOf(tag.name) > -1)
+			resolve: tag => getPostsList().filter(post => ~post.tags.indexOf(tag.name))
 		}
 	})
 });

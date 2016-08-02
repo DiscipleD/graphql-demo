@@ -14,6 +14,17 @@ import TagType from './Tag';
 
 import { getTagByName } from '../../data';
 
+/**
+ * type Post {
+ *   id: String,
+ *   name: String,
+ *   createDate: String,
+ *   title: String,
+ *   subtitle: String,
+ *   content: String,
+ *   tags: [Tag]
+ * }
+ */
 const Post = new GraphQLObjectType({
 	name: 'PostType',
 	fields: () => ({
